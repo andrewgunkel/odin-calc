@@ -1,7 +1,6 @@
-#screen {
+#display {
     width: 200px;
     height: 50px;
     background-color: gray;
-    
     margin: 20px;
 }

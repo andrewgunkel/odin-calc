@@ -4,7 +4,7 @@ const btnMultiply = document.querySelector("#btn-multiply");
 const btnDivide = document.querySelector("#btn-divide");
 const btnEquals = document.querySelector("#btn-equals");
 
-const btnZero = document.querySelector("#btn-zero");
+/* const btnZero = document.querySelector("#btn-zero");
 const btnOne = document.querySelector("#btn-one");
 const btnTwo = document.querySelector("#btn-two");
 const btnThree = document.querySelector("#btn-three");
@@ -13,9 +13,11 @@ const btnFive = document.querySelector("#btn-five");
 const btnSix = document.querySelector("#btn-six");
 const btnSeven = document.querySelector("#btn-seven");
 const btnEight = document.querySelector("#btn-eight");
-const btnNine = document.querySelector("#btn-nine");
+const btnNine = document.querySelector("#btn-nine"); */
 
+const btnClear = document.querySelector("#btn-clear");
 
+const display = document.querySelector("#display");
 
 /* function operate (){ 
 
@@ -44,13 +46,13 @@ btnMinus.addEventListener("click",function enterMinus () {
 
 btnMultiply.addEventListener("click",function enterMultiply () {
     console.log("x")
-    operator = "*";
+    operator = "x";
     //operate();
 });
 
 btnDivide.addEventListener("click",function enterDivide () {
     console.log("÷")
-    operator = "/";
+    operator = "÷";
     //operate();
 });
 
@@ -86,10 +88,12 @@ numButtons.forEach(btn => {
     if (number1 === "default"){
         //number1 = "2"
         number1 = value;
-        console.log("number1 is " + number1)
+        console.log("number 1 is " + number1)
+        display.textContent = number1;
     } else {
     number2 = value;
-    console.log("number2 is " + number2)
+    console.log("number 2 is " + number2)
+    display.textContent = number2;
     }
 
 
@@ -113,16 +117,22 @@ const b = Number(number2);
 let result = "";
 
 if (operator === "+") {
-    result = (total + (a + b));
+    result = (a + b);
 } else if (operator === "-") {
-    result = (total + (a - b));
+    result = (a - b);
+} else if (operator === "x") {
+    result = (a * b);
+} else if (operator === "÷") {
+    result = (a / b);
 }
 
 total = result; 
 console.log("Total is " + total)
 
+display.textContent = total;
 
-number1 = "default";
+
+number1 = total;
 number2 = "default";
 
 
