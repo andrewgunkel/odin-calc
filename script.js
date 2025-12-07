@@ -3,149 +3,188 @@ const btnMinus = document.querySelector("#btn-minus");
 const btnMultiply = document.querySelector("#btn-multiply");
 const btnDivide = document.querySelector("#btn-divide");
 const btnEquals = document.querySelector("#btn-equals");
+const btnPeriod = document.querySelector("#btn-period");
+const numButtons = document.querySelectorAll(".num-btn");
 
-/* const btnZero = document.querySelector("#btn-zero");
-const btnOne = document.querySelector("#btn-one");
-const btnTwo = document.querySelector("#btn-two");
-const btnThree = document.querySelector("#btn-three");
-const btnFour = document.querySelector("#btn-four");
-const btnFive = document.querySelector("#btn-five");
-const btnSix = document.querySelector("#btn-six");
-const btnSeven = document.querySelector("#btn-seven");
-const btnEight = document.querySelector("#btn-eight");
-const btnNine = document.querySelector("#btn-nine"); */
 
 const btnClear = document.querySelector("#btn-clear");
 
 const display = document.querySelector("#display");
 
-/* function operate (){ 
-
-console.log(operator);
-}  */
-
-
-let number1 = "default";
+let number1 = "";
 let operator = "";
 let number2 = "";
 let total = "";
 let result = "";
 
+btnPeriod.addEventListener("click",function enterPeriod () {
+
+    if (operator === "") {
+        if (!number1.includes('.')) {
+            number1 = number1 + '.';
+            console.log("Pressed: .");
+            display.textContent = number1;
+    }}
+
+    else if (!number2.includes('.')) {
+        number2 = number2 + '.';
+        display.textContent = number1 + " " + operator + " " + number2; 
+    }
+    console.log(".");
+
+});
+
+btnClear.addEventListener("click",function enterClear () {
+
+    console.log("Entries cleared")
+    operator = "";
+    number1 = "";
+    number2 = "";
+    total = "";
+    display.textContent = "";
+
+});
+
 
 btnPlus.addEventListener("click",function enterPlus () {
-    console.log("+")
-    operator = "+";
-    //operate();
+
+    if (operator === "") {
+        console.log("+")
+        operator = "+";
+    }
+
+    else {
+        operate();
+        operator = "+";
+        console.log("+")
+    }
+
+    display.textContent = number1 + " " + operator;
 });
 
 btnMinus.addEventListener("click",function enterMinus () {
-    console.log("-")
-    operator = "-";
-    //operate();
+
+    if (operator === "") {
+        console.log("-")
+        operator = "-";
+    }
+
+    else {
+        operate();
+        operator = "-";
+        console.log("-")
+    }
+
+    display.textContent = number1 + " " + operator;
 });
 
 btnMultiply.addEventListener("click",function enterMultiply () {
-    console.log("x")
-    operator = "x";
-    //operate();
+
+    if (operator === "") {
+        console.log("x")
+        operator = "x";
+    }
+
+    else {
+        operate();
+        operator = "x";
+        console.log("x")
+    }
+
+    display.textContent = number1 + " " + operator;
 });
 
 btnDivide.addEventListener("click",function enterDivide () {
-    console.log("÷")
-    operator = "÷";
-    //operate();
+
+    if (operator === "") {
+        console.log("÷")
+        operator = "÷";
+    }
+    else {
+        operate();
+        operator = "÷";
+        console.log("÷")
+    }
+
+    display.textContent = number1 + " " + operator;
 });
 
 
-/* btnOne.addEventListener("click",function enterOne () {
-    
-    if (number1 === "default"){
-        number1 = "1"
-        console.log("number1 = 1")
-    } else {
-    number2 = "1";
-    console.log("number2 = 1")
-    }
-});
-
-btnTwo.addEventListener("click",function enterTwo () {
-    if (number1 === "default"){
-        number1 = "2"
-        console.log("number1 = 2")
-    } else {
-    number2 = "2";
-    console.log("number2 = 2")
-    }
-}); */
-
-const numButtons = document.querySelectorAll(".num-btn");
 
 numButtons.forEach(btn => {
   btn.addEventListener("click", () => {
-    const value = btn.dataset.num;
-    console.log("Pressed:", value);
 
-    if (number1 === "default"){
-        //number1 = "2"
-        number1 = value;
-        console.log("number 1 is " + number1)
-        display.textContent = number1;
-    } else {
-    number2 = value;
-    console.log("number 2 is " + number2)
-    display.textContent = number2;
-    }
+        const value = btn.dataset.num;
+        console.log("Pressed:", value);
 
+        if (operator === "" && total === "completed") {
 
+            number1 = "";
+            number1 = number1 + value;
+            display.textContent = number1 ;
+            total = "";
+        }
 
-  });
+        else if (operator === ""){
+
+            number1 = number1 + value;
+            console.log("number 1 is " + number1)
+            display.textContent = number1 ;
+
+        } else {
+
+            number2 = number2 + value;
+            console.log("number 2 is " + number2)
+            display.textContent = number1 + " " + operator + " " +  number2;
+        }
+
+    });
+
 });
 
 btnEquals.addEventListener("click",operate);
 
 
-
-
-//console.log(operator);
-
-
 function operate (){ 
 
     const a = Number(number1);
-const b = Number(number2);
+    const b = Number(number2);
 
-let result = "";
+    //let result = "";
+    if (operator === "" || number1 === "" || number2 === "") {
 
-if (operator === "+") {
-    result = (a + b);
-} else if (operator === "-") {
-    result = (a - b);
-} else if (operator === "x") {
-    result = (a * b);
-} else if (operator === "÷") {
-    result = (a / b);
-}
+        console.log("Please enter all inputs");
+        return;
 
-total = result; 
-console.log("Total is " + total)
+    }
 
-display.textContent = total;
+    else if (operator === "÷" && b === 0) {
+        console.log("That's the forbidden sequence!")
+        return;
 
+    }
 
-number1 = total;
-number2 = "default";
+    else if (operator === "+") {
+        result = Math.round((a + b) * 100) / 100;
 
+    } else if (operator === "-") {
+        result = Math.round((a - b) * 100) / 100;
 
+    } else if (operator === "x") {
+        result = Math.round((a * b) * 100) / 100;
 
+    } else if (operator === "÷") {
+        result = Math.round((a / b) * 100) / 100;
+    }
+
+    total = result; 
+
+    console.log("Total is " + total)
+
+    display.textContent = total;
+
+    number1 = total;
+    number2 = "";
+    operator = "";
+    total = "completed";
 } 
-
-
-
-
-//btnMinus.addEventListener("click", (operator = "-"))
-
-
-
-//console.log(operator);
-
-//} 
