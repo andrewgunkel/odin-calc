@@ -8,8 +8,9 @@ const numButtons = document.querySelectorAll(".num-btn");
 
 
 const btnClear = document.querySelector("#btn-clear");
+const btnBackspace = document.querySelector("#btn-backspace");
 
-const display = document.querySelector("#display");
+const displayTop = document.querySelector("#display-top");
 
 let number1 = "";
 let operator = "";
@@ -23,12 +24,12 @@ btnPeriod.addEventListener("click",function enterPeriod () {
         if (!number1.includes('.')) {
             number1 = number1 + '.';
             console.log("Pressed: .");
-            display.textContent = number1;
+            displayTop.textContent = number1;
     }}
 
     else if (!number2.includes('.')) {
         number2 = number2 + '.';
-        display.textContent = number1 + " " + operator + " " + number2; 
+        displayTop.textContent = number1 + " " + operator + " " + number2; 
     }
     console.log(".");
 
@@ -41,7 +42,25 @@ btnClear.addEventListener("click",function enterClear () {
     number1 = "";
     number2 = "";
     total = "";
-    display.textContent = "";
+    displayTop.textContent = "";
+
+});
+
+btnBackspace.addEventListener("click",function enterBackspace () {
+
+        if (operator === "") {
+        number1 = number1.slice(0, -1);
+        displayTop.textContent = number1;
+        return;
+    }
+    if (number2 !== "") {
+        number2 = number2.slice(0, -1);
+        displayTop.textContent = number1 + " " + operator + " " + number2;
+        return;
+    }
+
+    operator = "";
+    displayTop.textContent = number1;
 
 });
 
@@ -59,7 +78,7 @@ btnPlus.addEventListener("click",function enterPlus () {
         console.log("+")
     }
 
-    display.textContent = number1 + " " + operator;
+    displayTop.textContent = number1 + " " + operator;
 });
 
 btnMinus.addEventListener("click",function enterMinus () {
@@ -75,7 +94,7 @@ btnMinus.addEventListener("click",function enterMinus () {
         console.log("-")
     }
 
-    display.textContent = number1 + " " + operator;
+    displayTop.textContent = number1 + " " + operator;
 });
 
 btnMultiply.addEventListener("click",function enterMultiply () {
@@ -91,7 +110,7 @@ btnMultiply.addEventListener("click",function enterMultiply () {
         console.log("x")
     }
 
-    display.textContent = number1 + " " + operator;
+    displayTop.textContent = number1 + " " + operator;
 });
 
 btnDivide.addEventListener("click",function enterDivide () {
@@ -106,7 +125,7 @@ btnDivide.addEventListener("click",function enterDivide () {
         console.log("÷")
     }
 
-    display.textContent = number1 + " " + operator;
+    displayTop.textContent = number1 + " " + operator;
 });
 
 
@@ -121,7 +140,7 @@ numButtons.forEach(btn => {
 
             number1 = "";
             number1 = number1 + value;
-            display.textContent = number1 ;
+            displayTop.textContent = number1 ;
             total = "";
         }
 
@@ -129,13 +148,13 @@ numButtons.forEach(btn => {
 
             number1 = number1 + value;
             console.log("number 1 is " + number1)
-            display.textContent = number1 ;
+            displayTop.textContent = number1 ;
 
         } else {
 
             number2 = number2 + value;
             console.log("number 2 is " + number2)
-            display.textContent = number1 + " " + operator + " " +  number2;
+            displayTop.textContent = number1 + " " + operator + " " +  number2;
         }
 
     });
@@ -159,7 +178,7 @@ function operate (){
     }
 
     else if (operator === "÷" && b === 0) {
-        console.log("That's the forbidden sequence!")
+        alert("That's the forbidden sequence! Try again.")
         return;
 
     }
@@ -181,7 +200,7 @@ function operate (){
 
     console.log("Total is " + total)
 
-    display.textContent = total;
+    displayTop.textContent = total;
 
     number1 = total;
     number2 = "";
