@@ -4,35 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <title>Calculator</title>
 </head>
 <body>
     <main class="calculator">
-
         <div id ="display-top"></div>
 
-        <div id = "operator-btns">
-        <button id ="btn-plus">+</button>
+        <!-- <div id = "operator-btns">
         <button id ="btn-minus">-</button>
         <button id ="btn-multiply">x</button>
         <button id ="btn-divide">÷</button>
-        <button id ="btn-equals">=</button>
+        
         <button id ="btn-period">.</button>
         <button id ="btn-backspace">←</button>
         <button id ="btn-clear">Clear</button>
-        </div>
+        </div> -->
          <br>
-        <div id = "num-btns">
+        <div id = "btns">
+        <button class="btn" id ="btn-clear">C</button>
         <button class="num-btn" data-num="0">0</button>
+        <button class="btn" id ="btn-period">.</button>
+        <button class="btn" id ="btn-divide">÷</button>
         <button class="num-btn" data-num="1">1</button>
         <button class="num-btn" data-num="2">2</button>
         <button class="num-btn" data-num="3">3</button>
+        <button class="btn" id ="btn-multiply">x</button>
         <button class="num-btn" data-num="4">4</button>
         <button class="num-btn" data-num="5">5</button>
         <button class="num-btn" data-num="6">6</button>
+        <button class="btn" id ="btn-minus">-</button>
         <button class="num-btn" data-num="7">7</button>
         <button class="num-btn" data-num="8">8</button>
         <button class="num-btn" data-num="9">9</button>
+        <button class="btn" id ="btn-plus">+</button>
+        <button class="btn" id ="btn-backspace">←</button>
+        <button class="btn" id ="btn-equals">=</button>
         </div>
 
         <script src="script.js"></script>

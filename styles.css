@@ -1,7 +1,109 @@
+
+body {
+    background-color: #E1D9FF;
+}
+main {
+    background-color: #0E131F;
+    padding: 20px;
+    width: 335px;
+    /* height: 400px; */
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border-top: 5px solid #607096;
+    border-right: 5px solid #7F90B6;
+    border-radius: 15px;
+
+    
+}
+
 #display-top {
-    width: 200px;
+    width: 300px;
     height: 50px;
-    background-color: gray;
-    margin: 20px;
+    background-color: #8B939C;
+    margin-top: 20px;
+    text-align: right;
+    color: #0E131F;
+
+   /*  font-family: 'Courier New', Courier, monospace; */
+   font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    padding: 5px;
+    padding-top: 20px;
+    border-bottom: 4px solid white;
+    border-left: 4px solid #B9CBE1;
+    
+}
+
+#num-btns {
+    width: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+    flex-wrap: wrap;
+}
+
+.num-btn, .btn {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    background-color: white;
+    border-style: none;
+    border-top: 3px solid #B9CBE1;
+    border-right: 3px solid #B9CBE1;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.num-btn:active, .btn:active {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    background-color: #B9CBE1;
+    border-style: none;
+    border-top: 3px solid #B9CBE1;
+    border-right: 3px solid #B9CBE1;
+}
+
+#btn-equals, #btn-backspace {
+    width: 145px;
+
+}
+
+#btn-clear, #btn-backspace {
+    background-color: #F72F57;
     color: white;
+    border-top: 3px solid #F06C86;
+    border-right: 3px solid #F0889D;
+}
+
+#btn-clear:active, #btn-backspace:active {
+    background-color: #F0889D;
+    color: white;
+    border-top: 3px solid #F06C86;
+    border-right: 3px solid #F0889D;
+}
+
+
+#btn-equals {
+    background-color: #38405F;
+    color: white;
+    border-top: 3px solid #9087B1;
+    border-right: 3px solid #AB9DDC;
+}
+
+#btn-equals:active {
+    background-color: #AB9DDC;
+    color: white;
+    border-top: 3px solid #9087B1;
+    border-right: 3px solid #AB9DDC;
+}
+
+h1 {
+    color: white;
+    font-size: 20px;
 }

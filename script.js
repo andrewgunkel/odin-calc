@@ -164,6 +164,7 @@ numButtons.forEach(btn => {
 btnEquals.addEventListener("click",operate);
 
 
+
 function operate (){ 
 
     const a = Number(number1);
@@ -207,3 +208,4 @@ function operate (){
     operator = "";
     total = "completed";
 } 
+
