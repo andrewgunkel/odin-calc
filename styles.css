@@ -6,7 +6,6 @@ main {
     background-color: #0E131F;
     padding: 20px;
     width: 335px;
-    /* height: 400px; */
     display: flex;
     flex-direction: column;
     margin-top: 5%;
@@ -28,8 +27,6 @@ main {
     margin-top: 20px;
     text-align: right;
     color: #0E131F;
-
-   /*  font-family: 'Courier New', Courier, monospace; */
    font-family: 'Orbitron', sans-serif;
     font-size: 24px;
     padding: 5px;
