@@ -128,34 +128,30 @@ btnDivide.addEventListener("click",function enterDivide () {
     displayTop.textContent = number1 + " " + operator;
 });
 
+function handleNumberInput(value) {
+  console.log("Pressed:", value);
 
+  if (operator === "" && total === "completed") {
+    number1 = "";
+    number1 = number1 + value;
+    displayTop.textContent = number1;
+    total = "";
+  } else if (operator === "") {
+    number1 = number1 + value;
+    console.log("number 1 is " + number1);
+    displayTop.textContent = number1;
+  } else {
+    number2 = number2 + value;
+    console.log("number 2 is " + number2);
+    displayTop.textContent = number1 + " " + operator + " " + number2;
+  }
+}
 
 numButtons.forEach(btn => {
   btn.addEventListener("click", () => {
 
         const value = btn.dataset.num;
-        console.log("Pressed:", value);
-
-        if (operator === "" && total === "completed") {
-
-            number1 = "";
-            number1 = number1 + value;
-            displayTop.textContent = number1 ;
-            total = "";
-        }
-
-        else if (operator === ""){
-
-            number1 = number1 + value;
-            console.log("number 1 is " + number1)
-            displayTop.textContent = number1 ;
-
-        } else {
-
-            number2 = number2 + value;
-            console.log("number 2 is " + number2)
-            displayTop.textContent = number1 + " " + operator + " " +  number2;
-        }
+        handleNumberInput(value);
 
     });
 
@@ -170,7 +166,6 @@ function operate (){
     const a = Number(number1);
     const b = Number(number2);
 
-    //let result = "";
     if (operator === "" || number1 === "" || number2 === "") {
 
         console.log("Please enter all inputs");
@@ -209,3 +204,57 @@ function operate (){
     total = "completed";
 } 
 
+document.addEventListener("keydown", handleKey);
+
+function handleKey(e) {
+    const key = e.key;
+
+    if (key >= "0" && key <= "9") {
+        handleNumberInput(key);
+    return;
+    }
+
+    if (key === "Enter" || key === "Backspace") {
+        e.preventDefault();
+    }
+
+    if (key === ".") {
+        btnPeriod.click();
+        return;
+    }
+
+    if (key === "+") {
+        btnPlus.click();
+        return;
+    }
+
+    if (key === "-") {
+        btnMinus.click();
+        return;
+    }
+
+    if (key === "*" || key === "x") {
+        btnMultiply.click();
+        return;
+    }
+
+    if (key === "/") {
+        btnDivide.click();
+        return;
+    }
+
+    if (key === "=" || key === "Enter") {
+        btnEquals.click();
+        return;
+    }
+
+    if (key === "Backspace") {
+        btnBackspace.click();
+        return;
+    }
+
+    if (key === "Escape") {
+        btnClear.click();
+        return;
+    }
+}
